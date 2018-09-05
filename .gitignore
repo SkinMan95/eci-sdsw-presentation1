@@ -239,3 +239,6 @@ buildNumber.properties
 .mvn
 
 presentation-lab1.iml
+.classpath
+.project
+.settings

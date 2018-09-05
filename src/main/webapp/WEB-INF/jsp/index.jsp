@@ -1,15 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page session="true"%>
+<html lang="en">
+<head>
+<title>Hello World</title>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+</head>
 
-    <html lang="en">
-    <head>
-        <title>Hello World</title>
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    </head>
-
-    <body>
-    <div class="container">
-        <h1>TODO Secure this</h1>
-        <p>We would like to secure this page</p>
-    </div>
-    </body>
-    </html>
+<body>
+	<div class="container">
+		<h1>This is secured!</h1>
+		<p>
+			Hello <b><c:out value="${pageContext.request.remoteUser}" /></b>
+		</p>
+		<c:url var="logoutUrl" value="/logout" />
+		<form class="form-inline" action="${logoutUrl}" method="post">
+			<input type="submit" value="Log out" /> <input type="hidden"
+				name="${_csrf.parameterName}" value="${_csrf.token}" />
+		</form>
+	</div>
+</body>
+</html>
